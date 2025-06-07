@@ -1,5 +1,13 @@
 # VacationCalender
 
+## Monthly View
+
+![image](https://github.com/user-attachments/assets/54723db8-43a0-4ab0-a1b3-01b871473b91)
+
+## Quaterly View
+
+![image](https://github.com/user-attachments/assets/fd0fec98-087c-44eb-b88e-d9fd81b6d406)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.11.
 
 ## Development server
@@ -25,3 +33,5 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
