@@ -1,0 +1,25 @@
+.quarter-view {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+
+  >div {
+    flex: 1;
+    min-width: 30%;
+  }
+}
+
+
+.holiday-week-green {
+  background-color: #d4edda;
+}
+
+.holiday-week-blue {
+  background-color: #cce5ff;
+}
+
+.holiday-title {
+  font-size: 0.7em;
+  color: #1b4f72;
+  margin-top: 2px;
+}

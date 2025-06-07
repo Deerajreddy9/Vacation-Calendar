@@ -1,0 +1,70 @@
+<div class="row mb-2">
+  <label for="country" class="col-2 label col-form-label">Select Country:</label>
+  <div class="col-2">
+    <select id="country" class="form-select" [(ngModel)]="selectedCountry" (change)="onCountryChange()">
+      <option *ngFor="let country of countries" [value]="country.code2">
+        {{ country.name }}
+      </option>
+    </select>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="navigation-buttons col-6">
+    <button class="btn btn-info" (click)="goToPrevious()">Previous</button>
+    <button class="btn btn-info mx-1" (click)="goToToday()">Today</button>
+    <button class="btn btn-info" (click)="goToNext()">Next</button>
+  </div>
+
+  <div class="view-toggle col-6 text-end">
+    <button class="btn btn-primary me-1" (click)="setView('month')">Monthly View</button>
+    <button class="btn btn-primary" (click)="setView('quarter')">Quarterly View</button>
+  </div>
+
+</div>
+
+
+<div class="current-period">
+  <h3 class="text-center" *ngIf="calendarView === 'month'">
+    {{ viewDate | date: 'MMMM yyyy' }}
+  </h3>
+  <h3 class="text-center" *ngIf="calendarView === 'quarter'">
+    {{ getRollingMonthRangeLabel() }}
+  </h3>
+</div>
+
+<!-- Monthly View -->
+<div *ngIf="calendarView === 'month'">
+  <mwl-calendar-month-view
+    [viewDate]="viewDate"
+    [events]="events"
+    [cellTemplate]="customMonthCellTemplate">
+  </mwl-calendar-month-view>
+</div>
+
+<!-- Quarterly View -->
+<div *ngIf="calendarView === 'quarter'" class="quarter-view">
+  <div *ngFor="let date of quarterMonths">
+    <h4>{{ date | date: 'MMMM yyyy' }}</h4>
+    <mwl-calendar-month-view
+      [viewDate]="date"
+      [events]="events"
+      [activeDayIsOpen]="false"
+      [cellTemplate]="customMonthCellTemplate">
+    </mwl-calendar-month-view>
+  </div>
+</div>
+
+<ng-template #customMonthCellTemplate let-day="day">
+  <div
+    class="custom-cell"
+    [ngClass]="getWeekHolidayClass(day.date)">
+
+    <div>{{ day.date | date: 'd' }}</div>
+
+    <div class="holiday-title" *ngFor="let event of getEventsForDate(day.date)">
+      {{ event.title }}
+    </div>
+  </div>
+</ng-template>
