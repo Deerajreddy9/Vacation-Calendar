@@ -23,3 +23,7 @@
   color: #1b4f72;
   margin-top: 2px;
 }
+
+::ng-deep .cal-day-cell.cal-today {
+  background-color: #e0f7fa !important;
+}
